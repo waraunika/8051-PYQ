@@ -4,8 +4,16 @@ I will not share their hex file, or the proteus simulation. However, if one desi
 
 ## Assembly Programs
 1. [5] (`82 Ka`)
-```
+```wrap
 Write a program to read an 8-bit temperature in Celsius from Port 1 and to output the Fahrenheit temperature equivalent onto port 2. (Note: F = C x (9/5) + 32)
 ```
 
 Solution: [Temperature Assembly File](./temperature.asm)
+
+2. [4] (`81 Ch`, `72 Ma`)
+```wrap
+Write an assembly language programming to alternatively blink the 8 LEDs connected at port 2 of the 8051 microcontroller.
+```
+
+Solution: [Blinking Assembly File](./alt_blink.asm)
+
