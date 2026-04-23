@@ -1,0 +1,50 @@
+ORG 0100H
+PATTERNS:
+    DB 0C0H, 0F9H, 0A4H, 0B0H, 99H  ; 0 to 4
+    DB 92H, 82H, 0F8H, 80H, 90H  ; 5 to 9
+
+ORG 0000H
+    SJMP START
+
+START:
+    MOV P1, #00H ; clear data port
+	MOV P2, #08H ; intialize control port
+	
+	MOV R0, #09H ; ones digit, starting at 9
+	
+MAIN:
+	MOV R5, #0FFH
+DELAY_LONG:
+	ACALL DISPLAY
+	DJNZ R5, DELAY_LONG
+	
+	ACALL COUNT_DOWN
+	
+	SJMP MAIN
+	
+DISPLAY:
+	MOV DPTR, #PATTERNS
+	MOV A, R0
+	MOVC A, @A+DPTR
+	MOV P0, A
+	
+	ACALL SHORT_DELAY
+	
+	RET
+	
+SHORT_DELAY:
+	MOV R2, #5
+D1:
+	MOV R3, #255
+D2:
+	DJNZ R3, D2
+	DJNZ R2, D1
+	RET
+	
+COUNT_DOWN:
+	DEC R0
+	CJNE R0, #255, RETURN
+	MOV R0, #09H
+RETURN:
+	RET
+END

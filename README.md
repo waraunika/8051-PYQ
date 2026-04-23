@@ -8,7 +8,7 @@ For each question:
 
 And I humbly ask you to read comments, because I do talk about potential bugs and whatnots.
 
-## Assembly Programs
+## Simple Programs
 ### 1. [5] (`82 Ka`)
 > ```Write a program to read an 8-bit temperature in Celsius from Port 1 and to output the Fahrenheit temperature equivalent onto port 2. (Note: F = C x (9/5) + 32)```
 
@@ -43,44 +43,56 @@ Solution:
 1. [15ms Square Wave Assembly](./assembly/square_15ms.asm)
 2. [15ms Square Wave C](./embedded_c/square_15ms.c)
 
-### 6. [6] (`77 Ch`)
-> ```Write an assembly program to design a down counter that counts from 99 to 00```
 
-Solution:
-1. [99 Counter Assembly](./assembly/counter.asm)
-2. [99 Counter C](./embedded_c/counter.c)
-
-### 7. [6] (`76 Ba`)
+### 6. [6] (`76 Ba`)
 > ```Using 8051 instructions, control rate of blink of LED at pin P1.1 by two switches at P2.1 and P2.2 (One switch to increase rate of blink, another to decrease the rate of blink)```
 
 Solution:
 1. [Blinker Control Assembly](./assembly/speed_control.asm)
 2. [Blinker Control C](./embedded_c/speed_control.c)
 
-### 8. [4] (`75 Ba`)
+### 7. [4] (`75 Ba`)
 > ```Write an assembly language programming to blink 8 led connected at port 2 of 8051 microcontroller.```
 
 solution:
 1. [Simple blinker Assembly](./assembly/blink_all.asm)
 2. [Simple blinker C](./embedded_c/blink_all.c)
 
-### 9. [4] (`73 Ma`)
+### 8. [4] (`73 Ma`)
 > ```Write an assembly language programming to blink 8 led connected at port 2 of 8051 microcontroller.```
 
 solution:
 1. [Port Reader Assembly](./assembly/port_reader.asm)
 2. [Port Reader C](./embedded_c/port_reader.c)
 
-### 10. [4] (`71 Ma`)
+### 9. [4] (`71 Ma`)
 > ```Write a program in assembly language that computes a precise 5-millisecond delay using 8051 micro-controller.```
 
 solution:
 1. [5 MS Delay Assembly](./assembly/5_ms.asm)
 2. [5 MS Delay C](./embedded_c/5_ms.c)
 
-### 11. [4] (`72 Ash`)
+### 10. [4] (`72 Ash`)
 > ```Write a program using C-programming language to find the sum between two 8-bit BCD data stored in RAM locations 50H and 51H and store the BCD sum at RAM locations 52H and 53H.```
 
 solution:
 1. [Adder Assembly](./assembly/adder.asm)
 2. [Adder C](./embedded_c/adder.c)
+
+## 7 Segment Display Solutions
+### 1. [6] (`77 Ch`)
+> ```Write an assembly program to design a down counter that counts from 99 to 00```
+
+Solution:
+1. [99 Counter Assembly](./7seg/asm/counter_99_0.asm)
+2. [99 Counter C](./embedded_c/counter.c)
+
+### 2. [5, 6] (`73 Bh`, `80 Ch`)
+> ```9 to 0 in CA 7SEG```
+*Note*: I'm using Port 2.3 as control pin for 7SEG.
+1. [9 Counter](./7seg/asm/counter_9_0.asm)
+2. Do a simplified version of [this](./7seg/c/counter_99_0.c)
+
+### 3. [6] (`75 Bh`)
+1. [Assembly file](./7seg/asm/clock.asm)
+2. [C file](./7seg/c/clock.c)

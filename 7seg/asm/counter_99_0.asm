@@ -12,6 +12,7 @@ START:
     
     MOV R1, #09H ; tens digit (start at 9)
     MOV R0, #09H ; ones digit (start at 9)
+    MOV DPTR, #PATTERNS
     
 MAIN:
     ; Display current number for a while
@@ -22,7 +23,7 @@ DELAY_LONG:
     
     ACALL COUNT_DOWN ; decrement the counter
     
-    MOV A, R2 ; see if tens place is 0
+    MOV A, R1 ; see if tens place is 0
     JNZ MAIN  ; if not zero, keep on looping
     MOV A, R0 ; if zero, see if ones place is also zero
     JNZ MAIN  ; if not zero, keep on looping
@@ -37,7 +38,6 @@ DISPLAY:
     SETB P2.7 ; enable first display
     CLR P2.6  ; disable second display
     
-    MOV DPTR, #PATTERNS
     MOV A, R0
     MOVC A, @A+DPTR
     MOV P0, A
