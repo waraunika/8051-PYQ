@@ -13,24 +13,21 @@ MAIN:
 	; 500 us / 1.085 us = 461 cycles
 	; timer value = 65536 - 461 = FE33H
 	
-	; NOTE: while simulating in proteus, this got 0.47 ms not 0.5 ms
+	; NOTE: while simulating in proteus, this got 0.97 ms not 1 ms
+SETVALUE:
 	MOV TH0, #0FEH
 	MOV TL0, #33H
 	
-	CLR P1.5
-	SETB TR0
+	CPL P1.5
+  ACALL TIMER_START
+	SJMP SETVALUE
 	
-AGAIN:
+TIMER_START:
   SETB TR0
-	JNB TF0, $ ; wait for overflow flag
+WAIT:
+  JNB TF0, WAIT
+  CLR TR0 ; clear timer start flag
 	CLR TF0 ; clear overflow flag
-  CLR TR0
+  RET
 
-	CPL P1.5 ; toggle between high and low
-	
-	; reload timer
-	MOV TH0, #0FEH
-	MOV TL0, #33H
-	
-	SJMP AGAIN
 END
