@@ -21,8 +21,11 @@ MAIN:
 	SETB TR0
 	
 AGAIN:
-	JNB TF0, AGAIN ; wait for overflow flag
+  SETB TR0
+	JNB TF0, $ ; wait for overflow flag
 	CLR TF0 ; clear overflow flag
+  CLR TR0
+
 	CPL P1.5 ; toggle between high and low
 	
 	; reload timer
